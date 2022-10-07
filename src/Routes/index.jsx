@@ -4,7 +4,7 @@ import Userlist from "../Components/Userlist/Userlist";
 import RegisterPage from "../Components/Registerpage/RegisterPage";
 import LoginPage from "../Components/Loginpage/LoginPage";
 const  Private = ({ Item }) => {
-    const logged = true;
+    const logged = false;
 
     return logged > 0 ? <Item /> : <LoginPage />;
 };
