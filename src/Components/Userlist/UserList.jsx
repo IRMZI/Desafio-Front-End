@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const Userlist = () => {
+class Userlist extends Component {
+    render(){
     return (
         <div>Usuarios</div>
-    )
+    );
+}
 }
 
 export default Userlist;
