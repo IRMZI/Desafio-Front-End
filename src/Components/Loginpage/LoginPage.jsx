@@ -48,12 +48,17 @@ import useAut from "../../hook/aut";
           value={Senha}
           onChange={(e) => [setSenha(e.target.value), setErro("")]}
         />
+        <p className="requirementsPass">A senha deve conter no mínimo 8 caracteres, um número, uma letra
+maiúscula e um caractere especial.</p>
         <label>{Erro}</label>
         <Button type="submit" onClick={handleLogin} text="login" />
-        <label>
-          <Link to="/registerpage"></Link>
+        <div className="toRegister">
+        <label >
+          Não possui cadastro?
+          <Link to="/registerpage">Clique aqui</Link>
         </label>
-        {/* TO REGISTER */}
+        </div>
+
 
       </form>
     </section>

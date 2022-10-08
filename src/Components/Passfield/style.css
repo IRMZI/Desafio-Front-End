@@ -1,9 +1,8 @@
-.field{
+.field-pass{
     width: 60%;
     margin-left: 1%;
     padding: 2%;
     outline:none;
     border: none;
     background-color: #cccccc;
-    margin-bottom: 4em;
 }

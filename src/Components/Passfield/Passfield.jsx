@@ -8,7 +8,7 @@ const Passfield = ({ type, placeholder, value, onChange }) => {
         <i class="fa-solid fa-lock fa-2xl"></i>
       </label>
       <input
-        className="field"
+        className="field-pass"
         onChange={onChange}
         value={value}
         type={type}

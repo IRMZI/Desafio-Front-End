@@ -31,10 +31,10 @@ export const AutProvider = ({ children }) => {
                 setUser({ email, password });
                 return; 
               } else {
-                return "E-mail ou senha incorretos";
+                return "Usuário não cadastrado";
               }
             } else {
-              return "Usuário não cadastrado";
+              return "E-mail ou senha incorretos";
             }
           }
 
