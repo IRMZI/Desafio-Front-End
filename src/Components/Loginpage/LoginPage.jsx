@@ -51,6 +51,7 @@ import useAut from "../../hook/aut";
         <p className="requirementsPass">A senha deve conter no mínimo 8 caracteres, um número, uma letra
 maiúscula e um caractere especial.</p>
         <label>{Erro}</label>
+        <p></p>
         <Button type="submit" onClick={handleLogin} text="login" />
         <div className="toRegister">
         <label >
