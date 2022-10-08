@@ -13,33 +13,9 @@ form{
       margin-bottom: 2%;
       font-size: 3em;
   }
-  .loginTittle{
-      margin-bottom: 10%;
-      margin-top: 5%;
-      font-size: 3em;
-  }
-  
-  .field{
-      width: 60%;
-      margin-left: 1%;
-      padding: 2%;
-      outline:none;
-      border: none;
-      background-color: #cccccc;
-      margin-bottom: 4em;
-  }
-  
-  .button-login{
 
-      border-radius: 10px;
-      padding: 3%;
-      border-style: none;
-      width: 40%;
-      background-color: rgb(140, 27, 192);
-      display: block;
-      margin: 0 auto;
-      font-family: 'Helvetica', 'Arial', sans-serif;
-      color: #000000;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .loginTittle{
+    margin-bottom: 10%;
+    margin-top: 5%;
+    font-size: 3em;
+}

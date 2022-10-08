@@ -8,7 +8,7 @@ export const AutProvider = ({ children }) => {
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
-        const userStorage = localStorage.getItem("users_db");
+        const userStorage = localStorage.getItem("users_bd");
     
         if (userToken && userStorage) {
           const temUser = JSON.parse(userStorage)?.filter(
@@ -19,11 +19,81 @@ export const AutProvider = ({ children }) => {
         }
       }, []);
     
-      const login = (email, password) => {
-        const userStorage = JSON.parse(localStorage.getItem("users_db"));
+        function login(email, password) {
+    const userStorage = JSON.parse(localStorage.getItem("users_bd"));
 
-        const temUser = userStorage = json.parse(localStorage.getItem(users))
+    const temUser = userStorage = json.parse(localStorage.getItem(users));
+    function login(email, password) {
+            const userStorage = JSON.parse(localStorage.getItem("users_bd"));
+
+            const temUser = userStorage?.filter((user) => user.email === email);
+
+            if (temUser?.length) {
+              if (temUser[0].email === email && temUser[0].password === password) {
+                const token = Math.random().toString(36).substring(2);
+                localStorage.setItem("user_token", JSON.stringify({ email, token }));
+                setUser({ email, password });
+                return;
+              } else {
+                return "E-mail ou senha incorretos";
+              }
+            } else {
+              return "Usuário não cadastrado";
+            }
+          }
+
+    const login = (email, password) => {
+      const userStorage = JSON.parse(localStorage.getItem("users_bd"));
+
+      const temUser = userStorage?.filter((user) => user.email === email);
+
+      if (temUser?.length) {
+        if (temUser[0].email === email && temUser[0].password === password) {
+          const token = Math.random().toString(36).substring(2);
+          localStorage.setItem("user_token", JSON.stringify({ email, token }));
+          setUser({ email, password });
+          return;
+        } else {
+          return "E-mail ou senha incorretos";
+        }
+      } else {
+        return "Usuário não cadastrado";
+      }
+    };
+
+    const logar = (email, password) => {
+      const userStorage = JSON.parse(localStorage.getItem("users_bd"));
+
+      const temUser = userStorage?.filter((user) => user.email === email);
+
+      if (temUser?.length) {
+        return "Já tem uma conta com esse E-mail";
       }
 
-return <AutContext.Provider>{children}</AutContext.Provider>;
-};
+      let newUser;
+
+      if (userStorage) {
+        newUser = [...userStorage, { email, password }];
+      } else {
+        newUser = [{ email, password }];
+      }
+
+      localStorage.setItem("users_bd", JSON.stringify(newUser));
+
+      return;
+    };
+
+    const deslogar = () => {
+      setUser(null);
+      localStorage.removeItem("user_token");
+    };
+
+    return (
+      <AutContext.Provider
+        value={{ user, signed: !!user, login, logar, deslogar }}
+      >
+        {children}
+      </AutContext.Provider>
+    );
+  }
+    }
