@@ -7,22 +7,24 @@ import "./style.css";
 import useAut from "../../hook/aut";
 
 const RegisterPage = () => {
-  const [Email, setEmail] = useState("");
-  const [Senha, setSenha] = useState("");
+  const [email, setEmail] = useState("");
   const [senhaConf, setSenhaConf] = useState("");
-  const [Erro, setErro] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
-  const { cadastrar } = useAut();
+  const { signup } = useAut();
 
   const handleCadastro = () => {
-    setErro("As senhas não são iguais!");
-    if (!Email | !Senha | !senhaConf) {
+    if (!email | !senha | !senhaConf) {
       setErro("Preencha os campos");
+      return;
+    } else if (senha !== senhaConf) {
+      setErro("As senhas não são iguais!");
       return;
     }
 
-    const res = cadastrar(Email, Senha);
+    const res = signup(email, senha, senhaConf);
 
     if (res) {
       setErro(res);
@@ -40,7 +42,7 @@ const RegisterPage = () => {
         <h1 className="loginTittle">Register</h1>
         {/* EMAIL */}
         <EmailField
-          value={Email}
+          value={email}
           type="Email"
           placeholder="Digite seu E-mail"
           onChange={(e) => [setEmail(e.target.value), setErro("")]}
@@ -49,7 +51,7 @@ const RegisterPage = () => {
         <Passfield
           type="Password"
           placeholder="Digite sua senha"
-          value={Senha}
+          value={senha}
           onChange={(e) => [setSenha(e.target.value), setErro("")]}
         />
         <Passfield
@@ -63,7 +65,7 @@ const RegisterPage = () => {
           maiúscula e um caractere especial.
         </p>
 
-        <label>{Erro}</label>
+        <label>{erro}</label>
         <p></p>
         <Button type="submit" onClick={handleCadastro} text="Cadastrar" />
         <div className="toLogin">

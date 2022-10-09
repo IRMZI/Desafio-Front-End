@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./style.css";
 
 const Passfield = ({ type, placeholder, value, onChange }) => {
@@ -14,7 +14,7 @@ const Passfield = ({ type, placeholder, value, onChange }) => {
         type={type}
         placeholder={placeholder}
         required
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}"
       />
     </section>
   );

@@ -7,20 +7,20 @@ import "./style.css";
 import useAut from "../../hook/aut";
 
   const LoginPage = () => {
-  const { login } = useAut();
+  const { signin } = useAut();
   const navigate = useNavigate();
 
-  const [Email, setEmail] = useState("");
-  const [Senha, setSenha] = useState("");
-  const [Erro, setErro] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
 
   const handleLogin = () => {
-    if (!Email | !Senha) {
+    if (!email | !senha) {
       setErro("Preencha os campos");
       return;
     }
 
-    const res = login(Email, Senha);
+    const res = signin(email, senha);
 
     if (res) {
       setErro(res);
@@ -36,7 +36,7 @@ import useAut from "../../hook/aut";
         <h1 className="loginTittle">Login</h1>
         {/* EMAIL */}
         <EmailField
-          value={Email}
+          value={email}
           type="Email"
           placeholder="Digite seu E-mail"
           onChange={(e) => [setEmail(e.target.value), setErro("")]}
@@ -45,12 +45,12 @@ import useAut from "../../hook/aut";
         <Passfield
           type="Password"
           placeholder="Digite sua senha"
-          value={Senha}
+          value={senha}
           onChange={(e) => [setSenha(e.target.value), setErro("")]}
         />
         <p className="requirementsPass">A senha deve conter no mínimo 8 caracteres, um número, uma letra
 maiúscula e um caractere especial.</p>
-        <label>{Erro}</label>
+        <label>{erro}</label>
         <p></p>
         <Button type="submit" onClick={handleLogin} text="login" />
         <div className="toRegister">

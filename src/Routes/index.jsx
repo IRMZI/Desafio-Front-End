@@ -6,9 +6,9 @@ import LoginPage from "../Components/Loginpage/LoginPage";
 import useAut from "../hook/aut"
 
 const  Private = ({ Item }) => {
-    const {logged} = useAut();
+    const {signed} = useAut();
 
-    return logged > 0 ? <Item /> : <LoginPage />;
+    return signed > 0 ? <Item /> : <Userlist />;
 };
 
 const RoutesApp = () => {
@@ -16,7 +16,7 @@ const RoutesApp = () => {
     <BrowserRouter>
     <Fragment>
             <Routes>
-                <Route exact path="/userlist" element={<Private Item={Userlist} />} />
+                <Route exact path="/Userlist" element={<Private Item={Userlist} />} />
                 <Route path="/" element={<LoginPage />} /> 
                 <Route exact path="/registerpage" element={<RegisterPage/>} />
                 <Route path="*" element={<LoginPage />} />

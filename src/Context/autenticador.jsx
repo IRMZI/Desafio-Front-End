@@ -7,7 +7,7 @@ export const AutProvider = ({ children }) => {
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
-        const userStorage = localStorage.getItem("users_db");
+        const userStorage = localStorage.getItem("users_bd");
     
         if (userToken && userStorage) {
           const temUser = JSON.parse(userStorage)?.filter(
@@ -18,9 +18,9 @@ export const AutProvider = ({ children }) => {
         }
       }, []);
     
-    const login = (email, password) => {
+    const signin = (email, password) => {
 
-            const userStorage = JSON.parse(localStorage.getItem("users_db"));
+            const userStorage = JSON.parse(localStorage.getItem("users_bd"));
 
             const temUser = userStorage?.filter((user) => user.email === email);
 
@@ -38,8 +38,8 @@ export const AutProvider = ({ children }) => {
             }
           }
 
-      const logar = (email, password) => {
-      const userStorage = JSON.parse(localStorage.getItem("users_db"));
+      const signup = (email, password) => {
+      const userStorage = JSON.parse(localStorage.getItem("users_bd"));
 
       const temUser = userStorage?.filter((user) => user.email === email);
 
@@ -55,19 +55,19 @@ export const AutProvider = ({ children }) => {
         newUser = [{ email, password }];
       }
 
-      localStorage.setItem("users_db", JSON.stringify(newUser));
+      localStorage.setItem("users_bd", JSON.stringify(newUser));
 
       return;
     };
 
-    const deslogar = () => {
+    const signout = () => {
       setUser(null);
       localStorage.removeItem("user_token");
     };
 
     return (
       <AutContext.Provider
-        value={{ user, logged: !!user, login, logar, deslogar }}
+        value={{ user, logged: !!user, signin, signup, signout }}
       >
         {children}
       </AutContext.Provider>
