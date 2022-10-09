@@ -23,14 +23,13 @@ const RegisterPage = () => {
       setErro("As senhas não são iguais!");
       return;
     }
-
+    
     const res = signup(email, senha, senhaConf);
-
+    
     if (res) {
       setErro(res);
       return;
     }
-
     alert("usuário cadastrado com sucesso");
     navigate("/userlist");
   };
