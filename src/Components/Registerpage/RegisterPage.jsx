@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
-
+  const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
   const { signup } = useAut();
 
   const handleCadastro = () => {
@@ -22,10 +22,9 @@ const RegisterPage = () => {
     } else if (senha !== senhaConf) {
       setErro("As senhas não são iguais!");
       return;
-    }
-    
-    const res = signup(email, senha, senhaConf);
-    
+    } else  if(strongRegex.test(senhaConf)){
+      const res = signup(email, senha, senhaConf);
+      
     if (res) {
       setErro(res);
       return;
@@ -33,7 +32,7 @@ const RegisterPage = () => {
     alert("usuário cadastrado com sucesso");
     navigate("/userlist");
   };
-
+  }
   return (
     <section className="card">
       <h1 className="tittle">Bem-vindo(a)</h1>

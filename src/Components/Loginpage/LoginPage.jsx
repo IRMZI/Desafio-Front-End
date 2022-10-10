@@ -9,7 +9,7 @@ import useAut from "../../hook/aut";
   const LoginPage = () => {
   const { signin } = useAut();
   const navigate = useNavigate();
-
+  let loginTries = 0;
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
@@ -17,9 +17,12 @@ import useAut from "../../hook/aut";
   const handleLogin = () => {
     if (!email | !senha) {
       setErro("Preencha os campos");
+      loginTries++
       return;
+    } else if (loginTries => 3){
+      setErro("Aguarde 30 segundos para tentar novamente")
     }
-
+    
     const res = signin(email, senha);
 
     if (res) {
@@ -48,8 +51,6 @@ import useAut from "../../hook/aut";
           value={senha}
           onChange={(e) => [setSenha(e.target.value), setErro("")]}
         />
-        <p className="requirementsPass">A senha deve conter no mínimo 8 caracteres, um número, uma letra
-maiúscula e um caractere especial.</p>
         <label>{erro}</label>
         <p></p>
         <Button type="submit" onClick={handleLogin} text="login" />
