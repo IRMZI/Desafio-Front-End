@@ -37,7 +37,7 @@ const RegisterPage = () => {
     <section className="card">
       <h1 className="tittle">Bem-vindo(a)</h1>
       <form>
-        <h1 className="loginTittle">Register</h1>
+        <h1 className="loginTittle">Cadastro</h1>
         {/* EMAIL */}
         <EmailField
           value={email}
