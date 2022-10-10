@@ -9,22 +9,18 @@ import useAut from "../../hook/aut";
   const LoginPage = () => {
   const { signin } = useAut();
   const navigate = useNavigate();
-  let loginTries = 0;
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
-
   const handleLogin = () => {
     if (!email | !senha) {
       setErro("Preencha os campos");
-      loginTries++
       return;
-    } else if (loginTries => 3){
-      setErro("Aguarde 30 segundos para tentar novamente")
-    }
+    } 
+
     
     const res = signin(email, senha);
-
     if (res) {
       setErro(res);
       return;
@@ -53,7 +49,7 @@ import useAut from "../../hook/aut";
         />
         <label>{erro}</label>
         <p></p>
-        <Button type="submit" onClick={handleLogin} text="login" />
+        <Button type="submit" onClick={handleLogin} text="Login" />
         <div className="toRegister">
         <label >
           Não possui cadastro?

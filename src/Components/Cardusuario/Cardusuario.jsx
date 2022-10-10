@@ -4,19 +4,17 @@ import useAut from "../../hook/aut";
 import "./style.css";
 
 
-const Cardusuario = () => {
-  const aut = useAut;
-  const users = localStorage.getItem("users_")
-  const key = localStorage.key(0)
-  const email = key.value
-
-  return (
+const Cardusuario = ({
+  name,
+  token,
+}) => {
+  return (  
 
     <section className="container-usuario">
     <AutProvider>
     <div className="container-usuario">
-    <h1 className="tittle-usuario"> </h1>
-    <h1 className="id-usuario"></h1>
+    <h1 className="tittle-usuario">{name}</h1>
+    <h1 className="id-usuario">{token}</h1>
     </div>
     </AutProvider>
     </section>
