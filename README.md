@@ -1,6 +1,6 @@
 # desafio-front-end
  
-Projeto criado como desafio para empresa Syonet utilizando o create-react-app
+Projeto criado como desafio para utilizando o create-react-app
 
 Para inicializar o repositório, abra o terminal e execute
 ### `npm start` 
